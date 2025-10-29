@@ -16,3 +16,8 @@ Route::get('/about', [AboutController::class, 'index'])->name('about');
 Route::get('/projects', [ProjectController::class, 'index'])->name('projects');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
+
+
+Route::fallback(function () {
+    return response()->view('errors.404', [], 404);
+});

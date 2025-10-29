@@ -8,7 +8,7 @@ class ContactController extends Controller
 {
     public function index()
     {
-        return view('contact.index');
+        return view('contact.contact_index');
     }
 
     /**

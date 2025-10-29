@@ -184,6 +184,9 @@
     @yield('styles')
 </head>
 <body>
+    <!-- Page Loader -->
+    @include('layouts.loader')
+
     <!-- Particles Background -->
     <div id="particles-js"></div>
 
