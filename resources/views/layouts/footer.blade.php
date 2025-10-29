@@ -39,7 +39,6 @@
     }
 
     .footer-section i {
-        margin-right: 0.5rem;
         color: var(--accent);
     }
 
@@ -169,10 +168,9 @@
                 Modern teknolojiler ve yenilikçi yaklaşımlarla yanınızdayız.
             </p>
             <div class="social-links">
-                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="https://x.com/coresoftdigital"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/coresoftdigital/"><i class="fab fa-instagram"></i></a>
             </div>
         </div>
 

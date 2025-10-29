@@ -254,53 +254,255 @@
         margin-top: 4rem;
     }
 
-    .stats-section {
+    /* Why Work With Us Section */
+    .why-section {
         padding: 5rem 5%;
-        background: rgba(30, 41, 59, 0.3);
+        position: relative;
+        overflow: hidden;
     }
 
-    .stats-grid {
+    .why-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(circle at 30% 50%, rgba(37, 99, 235, 0.1) 0%, transparent 50%);
+        pointer-events: none;
+    }
+
+    .why-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         gap: 2rem;
+        max-width: 1400px;
+        margin: 3rem auto 0;
+    }
+
+    .why-card {
+        background: rgba(30, 41, 59, 0.5);
+        padding: 2.5rem;
+        border-radius: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        transition: all 0.4s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .why-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: var(--gradient);
+        transform: scaleX(0);
+        transition: transform 0.4s ease;
+    }
+
+    .why-card:hover::before {
+        transform: scaleX(1);
+    }
+
+    .why-card:hover {
+        transform: translateY(-10px);
+        border-color: var(--accent);
+        box-shadow: 0 20px 40px rgba(6, 182, 212, 0.25);
+    }
+
+    .why-icon-box {
+        width: 80px;
+        height: 80px;
+        background: var(--gradient);
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+        position: relative;
+        animation: float 3s ease-in-out infinite;
+    }
+
+    .why-icon-box::after {
+        content: '';
+        position: absolute;
+        inset: -5px;
+        background: var(--gradient);
+        border-radius: 20px;
+        opacity: 0.3;
+        filter: blur(15px);
+        z-index: -1;
+    }
+
+    .why-icon-box i {
+        font-size: 2.5rem;
+        color: white;
+    }
+
+    .why-card h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: var(--light);
+    }
+
+    .why-card p {
+        color: rgba(248, 250, 252, 0.8);
+        line-height: 1.8;
+        margin-bottom: 1.5rem;
+    }
+
+    .why-list {
+        list-style: none;
+        padding: 0;
+    }
+
+    .why-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.8rem;
+        color: rgba(248, 250, 252, 0.7);
+        margin-bottom: 0.8rem;
+        font-size: 0.95rem;
+    }
+
+    .why-list li i {
+        color: var(--accent);
+        margin-top: 0.2rem;
+        flex-shrink: 0;
+    }
+
+    /* Process Section */
+    .process-section {
+        padding: 5rem 5%;
+    }
+
+    .process-container {
         max-width: 1200px;
         margin: 3rem auto 0;
     }
 
-    .stat-card {
+    .process-steps {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        position: relative;
+    }
+
+    .process-step {
         text-align: center;
-        padding: 2rem;
-        background: rgba(30, 41, 59, 0.5);
-        border-radius: 20px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
-        transition: all 0.3s ease;
+        position: relative;
     }
 
-    .stat-card:hover {
-        transform: translateY(-5px);
-        border-color: var(--accent);
-    }
-
-    .stat-card i {
-        font-size: 2.5rem;
+    .step-number {
+        width: 70px;
+        height: 70px;
         background: var(--gradient);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        margin-bottom: 1rem;
-    }
-
-    .stat-card h4 {
-        font-size: 2.5rem;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1.5rem;
+        font-size: 2rem;
         font-weight: 800;
-        background: var(--gradient);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        margin-bottom: 0.5rem;
+        color: white;
+        position: relative;
+        z-index: 1;
     }
 
-    .stat-card p {
+    .step-number::after {
+        content: '';
+        position: absolute;
+        inset: -5px;
+        background: var(--gradient);
+        border-radius: 50%;
+        opacity: 0.3;
+        filter: blur(10px);
+        z-index: -1;
+    }
+
+    .process-step h4 {
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+        color: var(--light);
+    }
+
+    .process-step p {
         color: rgba(248, 250, 252, 0.7);
+        line-height: 1.6;
+    }
+
+    /* CTA Section */
+    .project-cta {
+        padding: 5rem 5%;
+        background: rgba(30, 41, 59, 0.3);
+    }
+
+    .cta-container {
+        max-width: 900px;
+        margin: 0 auto;
+        background: var(--gradient);
+        padding: 4rem 3rem;
+        border-radius: 30px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .cta-container::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 20px,
+            rgba(255, 255, 255, 0.05) 20px,
+            rgba(255, 255, 255, 0.05) 40px
+        );
+        animation: slide 20s linear infinite;
+    }
+
+    .cta-container h2 {
+        font-size: 2.5rem;
+        color: white;
+        margin-bottom: 1rem;
+        position: relative;
+        z-index: 1;
+    }
+
+    .cta-container p {
+        font-size: 1.2rem;
+        color: rgba(255, 255, 255, 0.9);
+        margin-bottom: 2rem;
+        position: relative;
+        z-index: 1;
+    }
+
+    .cta-btn {
+        background: white;
+        color: var(--primary);
+        padding: 1.2rem 3rem;
+        border-radius: 50px;
+        font-weight: 600;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.8rem;
+        transition: all 0.3s ease;
+        position: relative;
+        z-index: 1;
+        font-size: 1.1rem;
+    }
+
+    .cta-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
     }
 
     @media (max-width: 768px) {
@@ -615,33 +817,161 @@
     </div>
 </section>
 
-<!-- Stats Section -->
-<section class="stats-section">
+<!-- Why Work With Us Section -->
+<section class="why-section">
     <div class="section-header">
-        <h2>Proje İstatistiklerimiz</h2>
-        <p>Sayılarla başarı hikayemiz</p>
+        <h2>Neden Bizimle Çalışmalısınız?</h2>
+        <p>Projenizi doğru ekibe teslim edin</p>
     </div>
-    <div class="stats-grid">
-        <div class="stat-card">
-            <i class="fas fa-project-diagram"></i>
-            <h4>150+</h4>
-            <p>Tamamlanan Proje</p>
+    <div class="why-grid">
+        <div class="why-card">
+            <div class="why-icon-box">
+                <i class="fas fa-bolt"></i>
+            </div>
+            <h3>Hızlı Teslimat</h3>
+            <p>
+                Küçük ekip yapımız sayesinde hızlı karar alır ve projeleri zamanında teslim ederiz.
+            </p>
+            <ul class="why-list">
+                <li><i class="fas fa-check-circle"></i> Prototip 1-2 haftada hazır</li>
+                <li><i class="fas fa-check-circle"></i> Agile metodoloji ile iteratif geliştirme</li>
+                <li><i class="fas fa-check-circle"></i> Günlük ilerleme raporları</li>
+            </ul>
         </div>
-        <div class="stat-card">
-            <i class="fas fa-globe"></i>
-            <h4>15+</h4>
-            <p>Farklı Sektör</p>
+
+        <div class="why-card">
+            <div class="why-icon-box">
+                <i class="fas fa-hand-holding-usd"></i>
+            </div>
+            <h3>Uygun Maliyetli</h3>
+            <p>
+                Büyük ajansların yüksek fiyatları yerine, kaliteli ve uygun maliyetli çözümler sunuyoruz.
+            </p>
+            <ul class="why-list">
+                <li><i class="fas fa-check-circle"></i> Gizli ücret yok</li>
+                <li><i class="fas fa-check-circle"></i> Esnek ödeme planları</li>
+                <li><i class="fas fa-check-circle"></i> Bakım ve destek dahil</li>
+            </ul>
         </div>
-        <div class="stat-card">
-            <i class="fas fa-code-branch"></i>
-            <h4>50K+</h4>
-            <p>Git Commit</p>
+
+        <div class="why-card">
+            <div class="why-icon-box">
+                <i class="fas fa-code"></i>
+            </div>
+            <h3>Modern Teknolojiler</h3>
+            <p>
+                En güncel frameworkler ve best practice'ler ile temiz, sürdürülebilir kod yazıyoruz.
+            </p>
+            <ul class="why-list">
+                <li><i class="fas fa-check-circle"></i> React, Vue.js, Laravel</li>
+                <li><i class="fas fa-check-circle"></i> Cloud-ready mimariler</li>
+                <li><i class="fas fa-check-circle"></i> Responsive ve mobil uyumlu</li>
+            </ul>
         </div>
-        <div class="stat-card">
-            <i class="fas fa-coffee"></i>
-            <h4>10K+</h4>
-            <p>Kahve Tüketimi</p>
+
+        <div class="why-card">
+            <div class="why-icon-box">
+                <i class="fas fa-comments"></i>
+            </div>
+            <h3>Şeffaf İletişim</h3>
+            <p>
+                Projenizin her aşamasında yanınızdayız. Sorularınıza hızlı yanıt, açık iletişim.
+            </p>
+            <ul class="why-list">
+                <li><i class="fas fa-check-circle"></i> Dedicated project manager</li>
+                <li><i class="fas fa-check-circle"></i> Haftalık demo toplantıları</li>
+                <li><i class="fas fa-check-circle"></i> WhatsApp/Slack desteği</li>
+            </ul>
         </div>
+
+        <div class="why-card">
+            <div class="why-icon-box">
+                <i class="fas fa-shield-alt"></i>
+            </div>
+            <h3>Güvenilir Destek</h3>
+            <p>
+                Proje tesliminden sonra da yanınızdayız. Teknik destek, güncelleme ve bakım hizmetleri.
+            </p>
+            <ul class="why-list">
+                <li><i class="fas fa-check-circle"></i> 3 ay ücretsiz destek</li>
+                <li><i class="fas fa-check-circle"></i> Bug fix garantisi</li>
+                <li><i class="fas fa-check-circle"></i> Dokümantasyon ve eğitim</li>
+            </ul>
+        </div>
+
+        <div class="why-card">
+            <div class="why-icon-box">
+                <i class="fas fa-rocket"></i>
+            </div>
+            <h3>SEO & Performans</h3>
+            <p>
+                Sadece güzel değil, hızlı ve Google'da görünür projeler geliştiriyoruz.
+            </p>
+            <ul class="why-list">
+                <li><i class="fas fa-check-circle"></i> SEO optimizasyonu dahil</li>
+                <li><i class="fas fa-check-circle"></i> PageSpeed 90+ skor</li>
+                <li><i class="fas fa-check-circle"></i> Core Web Vitals optimize</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- Our Process -->
+<section class="process-section">
+    <div class="section-header">
+        <h2>Çalışma Sürecimiz</h2>
+        <p>Baştan sona şeffaf ve organize</p>
+    </div>
+    <div class="process-container">
+        <div class="process-steps">
+            <div class="process-step">
+                <div class="step-number">1</div>
+                <h4>Keşif & Analiz</h4>
+                <p>
+                    İhtiyaçlarınızı dinliyor, hedeflerinizi anlıyor ve en uygun
+                    çözümü birlikte tasarlıyoruz.
+                </p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">2</div>
+                <h4>Tasarım & Onay</h4>
+                <p>
+                    UI/UX tasarımları hazırlıyor, sizin onayınızı alıyor ve
+                    gerekli revizyonları yapıyoruz.
+                </p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">3</div>
+                <h4>Geliştirme</h4>
+                <p>
+                    Agile metodoloji ile sprint'ler halinde kodluyoruz. Her sprint
+                    sonunda size demo sunuyoruz.
+                </p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">4</div>
+                <h4>Test & Teslim</h4>
+                <p>
+                    Kapsamlı testlerden geçiriyor, performans optimizasyonu
+                    yapıyor ve projeyi teslim ediyoruz.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="project-cta">
+    <div class="cta-container">
+        <h2>Projeniz Hazır mı?</h2>
+        <p>
+            Hayalinizdeki projeyi birlikte gerçekleştirelim. Ücretsiz danışmanlık için
+            hemen iletişime geçin!
+        </p>
+        <a href="{{ route('contact') }}" class="cta-btn">
+            <i class="fas fa-paper-plane"></i>
+            Ücretsiz Teklif Alın
+        </a>
     </div>
 </section>
 @endsection

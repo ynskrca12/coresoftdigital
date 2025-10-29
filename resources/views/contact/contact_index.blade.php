@@ -140,6 +140,8 @@
         font-weight: 600;
     }
 
+
+
     .form-control {
         width: 100%;
         padding: 1rem;
@@ -293,6 +295,68 @@
             grid-template-columns: 1fr;
         }
     }
+
+
+</style>
+
+<style>
+/* Kapsayıcı */
+.select-wrap {
+  position: relative;
+  width: 100%;
+}
+
+/* Label */
+.select-wrap .form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: rgba(248, 250, 252, 0.9) !important;
+    font-weight: 600;
+}
+
+/* Select alanı */
+.select-wrap .custom-select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 100%;
+    padding: 1rem;
+    background: rgba(15, 23, 42, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Focus durumu */
+.select-wrap .custom-select:focus {
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 0.15rem rgba(74, 144, 226, 0.15);
+  outline: none;
+}
+
+/* Ok simgesi (SVG) */
+.select-wrap::after {
+  content: "";
+  position: absolute;
+  top: 68%;
+  right: 12px;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  pointer-events: none;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="%23fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>');
+
+  background-repeat: no-repeat;
+  background-size: 18px 18px;
+  color: #ffffff !important;
+}
+
+/* IE / Edge varsayılan oku gizle */
+.select-wrap .custom-select::-ms-expand {
+  display: none;
+}
 </style>
 @endsection
 
@@ -318,7 +382,7 @@
                 <h3>Telefon</h3>
                 <p>
                     Hafta içi 09:00 - 18:00 saatleri arasında<br>
-                    <a href="tel:+905XXXXXXXXX">+90 (XXX) XXX XX XX</a>
+                    <a href="tel:+905342346481">+90 (534 234 64 81) </a>
                 </p>
             </div>
 
@@ -355,10 +419,8 @@
                 <p>Bizi takip edin</p>
                 <div class="social-links-large">
                     <a href="#"><i class="fab fa-linkedin"></i></a>
-                    <a href="#"><i class="fab fa-github"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="https://x.com/coresoftdigital"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/coresoftdigital/"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
         </div>
@@ -403,16 +465,16 @@
                 <textarea id="message" class="form-control" required placeholder="Proje detaylarınızı veya sorularınızı buraya yazabilirsiniz..."></textarea>
             </div>
 
-            <div class="form-group">
-                <label for="budget">Bütçe Aralığı</label>
-                <select id="budget" class="form-control">
-                    <option value="">Seçiniz</option>
-                    <option value="0-25k">0 - 25.000 TL</option>
-                    <option value="25k-50k">25.000 - 50.000 TL</option>
-                    <option value="50k-100k">50.000 - 100.000 TL</option>
-                    <option value="100k+">100.000 TL üzeri</option>
-                </select>
-            </div>
+<div class="form-group select-wrap">
+  <label for="budget" class="form-label">Bütçe Aralığı</label>
+  <select id="budget" class="form-control custom-select">
+    <option value="">Seçiniz</option>
+    <option value="0-25k">0 - 25.000 TL</option>
+    <option value="25k-50k">25.000 - 50.000 TL</option>
+    <option value="50k-100k">50.000 - 100.000 TL</option>
+    <option value="100k+">100.000 TL üzeri</option>
+  </select>
+</div>
 
             <button type="submit" class="submit-btn">
                 <i class="fas fa-paper-plane"></i>
@@ -423,7 +485,7 @@
 </section>
 
 <!-- Map Section -->
-<section class="map-section">
+{{-- <section class="map-section">
     <div class="section-header">
         <h2>Ofisimizi Ziyaret Edin</h2>
         <p>İstanbul Maslak'taki ofisimizde görüşmek üzere</p>
@@ -434,7 +496,7 @@
             <p>Google Maps Entegrasyonu</p>
         </div>
     </div>
-</section>
+</section> --}}
 
 <!-- FAQ Section -->
 <section class="faq-section">

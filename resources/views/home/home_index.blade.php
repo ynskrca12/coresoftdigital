@@ -143,60 +143,145 @@
     .string { color: #98c379; }
     .comment { color: #5c6370; font-style: italic; }
 
-    /* Trust Indicators */
-    .trust-section {
+    /* Why Choose Us Section */
+    .why-choose-section {
         padding: 5rem 5%;
-        background: rgba(30, 41, 59, 0.3);
+        position: relative;
+        overflow: hidden;
     }
 
-    .trust-container {
+    .why-choose-container {
         max-width: 1400px;
         margin: 0 auto;
     }
 
-    .trust-stats {
+    .features-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         gap: 2rem;
         margin-top: 3rem;
     }
 
-    .stat-card {
+    .feature-card {
         background: rgba(30, 41, 59, 0.5);
-        padding: 2rem;
+        padding: 2.5rem;
         border-radius: 20px;
         border: 1px solid rgba(255, 255, 255, 0.1);
         text-align: center;
-        transition: all 0.3s ease;
+        transition: all 0.5s ease;
         backdrop-filter: blur(10px);
+        position: relative;
+        overflow: hidden;
     }
 
-    .stat-card:hover {
-        transform: translateY(-10px);
+    .feature-card::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: conic-gradient(
+            from 0deg at 50% 50%,
+            transparent 0deg,
+            rgba(37, 99, 235, 0.1) 90deg,
+            transparent 180deg,
+            rgba(124, 58, 237, 0.1) 270deg,
+            transparent 360deg
+        );
+        animation: rotate 6s linear infinite;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+    }
+
+    .feature-card:hover::before {
+        opacity: 1;
+    }
+
+    @keyframes rotate {
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    .feature-card:hover {
+        transform: translateY(-15px) scale(1.02);
         border-color: var(--accent);
-        box-shadow: 0 20px 40px rgba(6, 182, 212, 0.2);
+        box-shadow: 0 25px 50px rgba(6, 182, 212, 0.3);
     }
 
-    .stat-icon {
-        font-size: 3rem;
+    .feature-icon-wrapper {
+        width: 100px;
+        height: 100px;
+        margin: 0 auto 1.5rem;
         background: var(--gradient);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        animation: float 3s ease-in-out infinite;
+    }
+
+    .feature-icon-wrapper::after {
+        content: '';
+        position: absolute;
+        inset: -5px;
+        border-radius: 50%;
+        background: var(--gradient);
+        opacity: 0.2;
+        filter: blur(10px);
+        z-index: -1;
+    }
+
+    .feature-icon {
+        font-size: 2.5rem;
+        color: white;
+    }
+
+    .feature-card h3 {
+        font-size: 1.4rem;
         margin-bottom: 1rem;
+        color: var(--light);
+        position: relative;
+        z-index: 1;
     }
 
-    .stat-number {
-        font-size: 3rem;
-        font-weight: 800;
-        background: var(--gradient);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        margin-bottom: 0.5rem;
-    }
-
-    .stat-label {
+    .feature-card p {
         color: rgba(248, 250, 252, 0.7);
-        font-size: 1.1rem;
+        line-height: 1.8;
+        font-size: 0.95rem;
+        position: relative;
+        z-index: 1;
+    }
+
+    .feature-badge {
+        display: inline-block;
+        padding: 0.4rem 1rem;
+        background: rgba(6, 182, 212, 0.2);
+        border: 1px solid var(--accent);
+        border-radius: 20px;
+        font-size: 0.8rem;
+        color: var(--accent);
+        font-weight: 600;
+        margin-bottom: 1rem;
+        animation: pulse 2s ease-in-out infinite;
+    }
+
+    /* Counter Animation */
+    @keyframes countUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .animated-text {
+        animation: countUp 0.8s ease-out forwards;
     }
 
     /* Services Section */
@@ -293,7 +378,6 @@
     /* Featured Projects */
     .projects-section {
         padding: 5rem 5%;
-        background: rgba(30, 41, 59, 0.3);
     }
 
     .projects-grid {
@@ -386,17 +470,13 @@
 
     /* CTA Section */
     .cta-section {
-        padding: 5rem 5%;
+        margin-bottom: 4rem;
         text-align: center;
     }
 
     .cta-content {
         max-width: 800px;
         margin: 0 auto;
-        padding: 4rem;
-        background: rgba(30, 41, 59, 0.5);
-        border-radius: 30px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
         backdrop-filter: blur(10px);
     }
 
@@ -488,41 +568,75 @@
     </div>
 </section>
 
-<!-- Trust Indicators -->
-<section class="trust-section">
-    <div class="trust-container">
+<!-- CTA Section -->
+<section class="cta-section">
+    <div class="cta-content">
+        <h2>Projenizi Hayata Geçirelim</h2>
+        <p>
+            Dijital dönüşüm yolculuğunuzda yanınızdayız. Projelerinizi görüşmek için
+            bugün iletişime geçin.
+        </p>
+        <a href="/contact" class="btn btn-primary">
+            <i class="fas fa-paper-plane"></i>
+            Ücretsiz Teklif Alın
+        </a>
+    </div>
+</section>
+
+<!-- Why Choose Us Section -->
+<section class="why-choose-section">
+    <div class="why-choose-container">
         <div class="section-header">
             <h2>Neden CoreSoft Digital?</h2>
-            <p>Rakamlarla ifade edilen güven ve başarı</p>
+            <p>Dijital başarınız için güvenilir çözüm ortağınız</p>
         </div>
-        <div class="trust-stats">
-            <div class="stat-card">
-                <div class="stat-icon">
-                    <i class="fas fa-project-diagram"></i>
+        <div class="features-grid">
+            <div class="feature-card">
+                <span class="feature-badge">7/24 Destek</span>
+                <div class="feature-icon-wrapper">
+                    <i class="fas fa-headset feature-icon"></i>
                 </div>
-                <div class="stat-number">150+</div>
-                <div class="stat-label">Tamamlanan Proje</div>
+                <h3>Sürekli Destek</h3>
+                <p>
+                    Proje teslimi sonrası da yanınızdayız. Teknik destek,
+                    güncelleme ve bakım hizmetleri dahil.
+                </p>
             </div>
-            <div class="stat-card">
-                <div class="stat-icon">
-                    <i class="fas fa-users"></i>
+
+            <div class="feature-card">
+                <span class="feature-badge">Uygun Fiyat</span>
+                <div class="feature-icon-wrapper">
+                    <i class="fas fa-hand-holding-usd feature-icon"></i>
                 </div>
-                <div class="stat-number">85+</div>
-                <div class="stat-label">Mutlu Müşteri</div>
+                <h3>Şeffaf Fiyatlandırma</h3>
+                <p>
+                    Gizli maliyet yok! Net ve anlaşılır fiyatlandırma ile
+                    bütçenize uygun paketler.
+                </p>
             </div>
-            <div class="stat-card">
-                <div class="stat-icon">
-                    <i class="fas fa-code"></i>
+
+            <div class="feature-card">
+                <span class="feature-badge">SEO Odaklı</span>
+                <div class="feature-icon-wrapper">
+                    <i class="fas fa-search feature-icon"></i>
                 </div>
-                <div class="stat-number">500K+</div>
-                <div class="stat-label">Satır Kod</div>
+                <h3>Arama Motoru Uyumlu</h3>
+                <p>
+                    Google'da görünür olun! SEO optimizasyonu ile
+                    organik trafiğinizi artırın.
+                </p>
             </div>
-            <div class="stat-card">
-                <div class="stat-icon">
-                    <i class="fas fa-award"></i>
+
+            <div class="feature-card">
+                <span class="feature-badge">Mobil Uyumlu</span>
+                <div class="feature-icon-wrapper">
+                    <i class="fas fa-mobile-alt feature-icon"></i>
                 </div>
-                <div class="stat-number">98%</div>
-                <div class="stat-label">Müşteri Memnuniyeti</div>
+                <h3>Responsive Tasarım</h3>
+                <p>
+                    Tüm cihazlarda mükemmel görünüm. Mobil, tablet ve
+                    masaüstü optimizasyonu garantili.
+                </p>
             </div>
         </div>
     </div>
@@ -665,18 +779,4 @@
     </div>
 </section>
 
-<!-- CTA Section -->
-<section class="cta-section">
-    <div class="cta-content">
-        <h2>Projenizi Hayata Geçirelim</h2>
-        <p>
-            Dijital dönüşüm yolculuğunuzda yanınızdayız. Projelerinizi görüşmek için
-            bugün iletişime geçin.
-        </p>
-        <a href="/contact" class="btn btn-primary">
-            <i class="fas fa-paper-plane"></i>
-            Ücretsiz Teklif Alın
-        </a>
-    </div>
-</section>
 @endsection
