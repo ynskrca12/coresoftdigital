@@ -138,6 +138,21 @@
         transform: translateY(-2px);
         box-shadow: 0 5px 15px rgba(37, 99, 235, 0.4);
     }
+     .logo-text {
+        background: var(--gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+    .footer-logo img {
+        height: 45px;
+        width: auto;
+        transition: all 0.3s ease;
+    }
+    .footer-logo:hover img {
+        filter: drop-shadow(0 0 10px rgba(37, 99, 235, 0.5));
+    }
+
 
     /* Responsive */
     @media (max-width: 768px) {
@@ -152,6 +167,12 @@
         .newsletter-btn {
             width: 100%;
         }
+        .logo-text {
+            font-size: 1.2rem;
+        }
+        .footer-logo img {
+            height: 35px;
+        }
     }
 </style>
 
@@ -160,8 +181,8 @@
         <!-- Company Info -->
         <div class="footer-section">
             <div class="footer-logo">
-                <i class="fas fa-code"></i>
-                CoreSoft Digital
+                <img src="{{ asset('images/logos/coresoftdigital-blank2.png') }}" alt="CoreSoft Digital Logo">
+                <span class="logo-text">CoreSoft Digital</span>
             </div>
             <p>
                 Profesyonel yazılım çözümleri ile işinizi dijital dünyaya taşıyoruz.

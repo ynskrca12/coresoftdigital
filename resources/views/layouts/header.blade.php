@@ -28,23 +28,32 @@
     .logo {
         font-size: 1.8rem;
         font-weight: 800;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        transition: all 0.3s ease;
+    }
+
+    .logo img {
+        height: 35px;
+        width: auto;
+        transition: all 0.3s ease;
+    }
+
+    .logo-text {
         background: var(--gradient);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
-        text-decoration: none;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        transition: all 0.3s ease;
-    }
-
-    .logo i {
-        -webkit-text-fill-color: var(--primary);
     }
 
     .logo:hover {
         transform: scale(1.05);
+    }
+
+    .logo:hover img {
+        filter: drop-shadow(0 0 10px rgba(37, 99, 235, 0.5));
     }
 
     .nav-links {
@@ -147,14 +156,22 @@
         .logo {
             font-size: 1.4rem;
         }
+
+        .logo img {
+            height: 35px;
+        }
+
+        .logo-text {
+            font-size: 1.2rem;
+        }
     }
 </style>
 
 <nav id="navbar">
     <div class="nav-container">
         <a href="{{ route('home') }}" class="logo">
-            <i class="fas fa-code"></i>
-            CoreSoft Digital
+            <img src="{{ asset('images/logos/coresoftdigital-blank2.png') }}" alt="CoreSoft Digital Logo">
+            <span class="logo-text">CoreSoft Digital</span>
         </a>
 
         <ul class="nav-links" id="nav-links">

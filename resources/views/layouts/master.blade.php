@@ -5,6 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="@yield('meta_description', 'CoreSoft Digital - Profesyonel yazılım çözümleri ile işinizi dijital dünyaya taşıyoruz.')">
     <meta name="keywords" content="@yield('meta_keywords', 'yazılım, web geliştirme, mobil uygulama, e-ticaret, laravel')">
+    <meta name="author" content="CoreSoft Digital">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:title" content="@yield('title', 'CoreSoft Digital - Profesyonel Yazılım Çözümleri')">
+    <meta property="og:description" content="@yield('meta_description', 'CoreSoft Digital - Profesyonel yazılım çözümleri ile işinizi dijital dünyaya taşıyoruz.')">
+    <meta property="og:image" content="{{ asset('images/logo/coresoftdigitalfavicon-bg-remove.png') }}">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="{{ url()->current() }}">
+    <meta property="twitter:title" content="@yield('title', 'CoreSoft Digital - Profesyonel Yazılım Çözümleri')">
+    <meta property="twitter:description" content="@yield('meta_description', 'CoreSoft Digital - Profesyonel yazılım çözümleri ile işinizi dijital dünyaya taşıyoruz.')">
+    <meta property="twitter:image" content="{{ asset('images/logo/coresoftdigitalfavicon.png') }}">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{{ asset('images/logo/coresoftdigitalfavicon.png') }}">
+    <link rel="shortcut icon" type="image/png" href="{{ asset('images/logo/coresoftdigitalfavicon.png') }}">
+    <link rel="apple-touch-icon" href="{{ asset('images/logo/coresoftdigitalfavicon.png') }}">
+
     <title>@yield('title', 'CoreSoft Digital - Profesyonel Yazılım Çözümleri')</title>
 
     <!-- Fonts -->

@@ -514,6 +514,9 @@
         .hero-animation {
             display: none;
         }
+        .cta-section {
+            padding: 0rem 1rem;
+        }
     }
 </style>
 @endsection

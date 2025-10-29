@@ -55,12 +55,18 @@
         font-size: 1rem;
         animation: pulse 1.5s ease-in-out infinite;
     }
+    .loader-logo img {
+        height: 35px;
+        width: auto;
+        transition: all 0.3s ease;
+    }
 </style>
 
 <div class="page-loader" id="pageLoader">
     <div class="loader-content">
         <div class="loader-logo">
-            <i class="fas fa-code"></i> CoreSoft Digital
+            <img src="{{ asset('/public/images/logos/coresoftdigital-blank2.png') }}" alt="CoreSoft Digital Logo">
+            <span class="logo-text">CoreSoft Digital</span>
         </div>
         <div class="spinner"></div>
         <div class="loader-text">Yükleniyor...</div>
