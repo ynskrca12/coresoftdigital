@@ -1,0 +1,228 @@
+<style>
+    /* Footer */
+    footer {
+        background: rgba(15, 23, 42, 0.95);
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 3rem 5%;
+        margin-top: 5rem;
+    }
+
+    .footer-content {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+    }
+
+    .footer-section h3 {
+        margin-bottom: 1rem;
+        background: var(--gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-size: 1.3rem;
+    }
+
+    .footer-section p,
+    .footer-section a {
+        color: rgba(248, 250, 252, 0.7);
+        text-decoration: none;
+        display: block;
+        margin-bottom: 0.5rem;
+        transition: all 0.3s ease;
+        line-height: 1.8;
+    }
+
+    .footer-section a:hover {
+        color: var(--accent);
+        transform: translateX(5px);
+    }
+
+    .footer-section i {
+        margin-right: 0.5rem;
+        color: var(--accent);
+    }
+
+    .footer-logo {
+        font-size: 1.5rem;
+        font-weight: 800;
+        background: var(--gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .footer-logo i {
+        -webkit-text-fill-color: var(--primary);
+    }
+
+    .social-links {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+
+    .social-links a {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: var(--gradient);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        transition: all 0.3s ease;
+    }
+
+    .social-links a:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(37, 99, 235, 0.4);
+    }
+
+    .copyright {
+        text-align: center;
+        margin-top: 2rem;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        color: rgba(248, 250, 252, 0.5);
+    }
+
+    .copyright a {
+        color: var(--accent);
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .copyright a:hover {
+        color: var(--primary);
+    }
+
+    /* Newsletter */
+    .newsletter-form {
+        display: flex;
+        gap: 0.5rem;
+        margin-top: 1rem;
+    }
+
+    .newsletter-input {
+        flex: 1;
+        padding: 0.8rem 1rem;
+        background: rgba(15, 23, 42, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 25px;
+        color: var(--light);
+        font-family: 'Inter', sans-serif;
+        transition: all 0.3s ease;
+    }
+
+    .newsletter-input:focus {
+        outline: none;
+        border-color: var(--accent);
+        background: rgba(15, 23, 42, 0.7);
+    }
+
+    .newsletter-btn {
+        padding: 0.8rem 1.5rem;
+        background: var(--gradient);
+        border: none;
+        border-radius: 25px;
+        color: white;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .newsletter-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(37, 99, 235, 0.4);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .footer-content {
+            grid-template-columns: 1fr;
+        }
+
+        .newsletter-form {
+            flex-direction: column;
+        }
+
+        .newsletter-btn {
+            width: 100%;
+        }
+    }
+</style>
+
+<footer>
+    <div class="footer-content">
+        <!-- Company Info -->
+        <div class="footer-section">
+            <div class="footer-logo">
+                <i class="fas fa-code"></i>
+                CoreSoft Digital
+            </div>
+            <p>
+                Profesyonel yazılım çözümleri ile işinizi dijital dünyaya taşıyoruz.
+                Modern teknolojiler ve yenilikçi yaklaşımlarla yanınızdayız.
+            </p>
+            <div class="social-links">
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+
+        <!-- Services -->
+        <div class="footer-section">
+            <h3>Hizmetlerimiz</h3>
+            <a href="{{ route('projects') }}">Web Uygulamaları</a>
+            <a href="{{ route('projects') }}">Mobil Uygulamalar</a>
+            <a href="{{ route('projects') }}">E-Ticaret Çözümleri</a>
+            <a href="{{ route('projects') }}">Kurumsal Yazılımlar</a>
+            <a href="{{ route('projects') }}">Cloud Çözümleri</a>
+            <a href="{{ route('projects') }}">AI & Otomasyon</a>
+        </div>
+
+        <!-- Company -->
+        <div class="footer-section">
+            <h3>Şirket</h3>
+            <a href="{{ route('about') }}">Hakkımızda</a>
+            <a href="{{ route('projects') }}">Projelerimiz</a>
+            <a href="{{ route('about') }}">Ekibimiz</a>
+            <a href="#">Kariyer</a>
+            <a href="#">Blog</a>
+            <a href="{{ route('contact') }}">İletişim</a>
+        </div>
+
+        <!-- Contact & Newsletter -->
+        <div class="footer-section">
+            <h3>İletişim</h3>
+            <p><i class="fas fa-envelope"></i> info@coresoftdigital.com</p>
+            <p><i class="fas fa-phone"></i> +90 (XXX) XXX XX XX</p>
+            <p><i class="fas fa-map-marker-alt"></i> Maslak, İstanbul, TR</p>
+
+            <h3 style="margin-top: 1.5rem;">Newsletter</h3>
+            <p>Yeniliklerden haberdar olun</p>
+            <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Teşekkürler! E-bültenimize kaydoldunuz.');">
+                <input type="email" class="newsletter-input" placeholder="E-posta adresiniz" required>
+                <button type="submit" class="newsletter-btn">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div class="copyright">
+        <p>
+            &copy; {{ date('Y') }} <a href="{{ route('home') }}">CoreSoft Digital</a>. Tüm hakları saklıdır.
+            | <a href="#">Gizlilik Politikası</a> | <a href="#">Kullanım Koşulları</a>
+        </p>
+        <p style="margin-top: 0.5rem; font-size: 0.9rem;">
+            Made with <i class="fas fa-heart" style="color: #ef4444;"></i> in Istanbul
+        </p>
+    </div>
+</footer>
