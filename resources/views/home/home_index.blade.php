@@ -404,7 +404,7 @@
     }
 
     .project-image {
-        height: 200px;
+        height: 330px;
         background: var(--gradient);
         display: flex;
         align-items: center;
@@ -414,6 +414,15 @@
         position: relative;
         overflow: hidden;
     }
+
+    .project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center; /* Ortalar */
+    display: block;
+    z-index: 1;
+}
 
     .project-image::before {
         content: '';
@@ -431,6 +440,8 @@
         );
         animation: slide 20s linear infinite;
     }
+
+
 
     @keyframes slide {
         0% { transform: translate(0, 0); }
@@ -721,61 +732,39 @@
         <h2>Öne Çıkan Projelerimiz</h2>
         <p>Son dönemde gerçekleştirdiğimiz başarılı projeler</p>
     </div>
-    <div class="projects-grid">
-        <div class="project-card">
-            <div class="project-image">
-                <i class="fas fa-shopping-bag"></i>
-            </div>
-            <div class="project-content">
-                <h3>ModaMarket E-Ticaret Platformu</h3>
-                <p>
-                    Türkiye'nin önde gelen moda markalarından biri için geliştirdiğimiz
-                    kapsamlı e-ticaret platformu. Günlük 50K+ ziyaretçi kapasiteli.
-                </p>
-                <div class="project-tags">
-                    <span class="tag">Laravel</span>
-                    <span class="tag">Vue.js</span>
-                    <span class="tag">E-Ticaret</span>
+
+    @if($projects->count() > 0)
+        <div class="projects-grid">
+            @foreach($projects as $project)
+                <div class="project-card">
+                    <div class="project-image">
+                        @if($project->image)
+                            <img src="{{ $project->image_url }}" alt="{{ $project->name }}">
+                        @else
+                            <i class="fas fa-project-diagram"></i>
+                        @endif
+                    </div>
+                    <div class="project-content">
+                        <h3>{{ $project->name }}</h3>
+                        <p>{{ Str::limit($project->description, 120) }}</p>
+                        <div class="project-tags">
+                            <span class="tag">{{ $project->category }}</span>
+                            <span class="tag">{{ $project->year }}</span>
+                            <span class="tag badge {{ $project->status_badge_class }}">{{ $project->status_label }}</span>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            @endforeach
         </div>
-        <div class="project-card">
-            <div class="project-image">
-                <i class="fas fa-hospital"></i>
-            </div>
-            <div class="project-content">
-                <h3>MediCare Hastane Yönetim Sistemi</h3>
-                <p>
-                    Özel hastaneler için geliştirilen entegre yönetim sistemi.
-                    Hasta kayıtları, randevu sistemi ve stok yönetimi modülleri.
-                </p>
-                <div class="project-tags">
-                    <span class="tag">PHP</span>
-                    <span class="tag">MySQL</span>
-                    <span class="tag">Kurumsal</span>
-                </div>
-            </div>
+    @else
+        <div style="text-align: center; padding: 4rem 2rem;">
+            <i class="fas fa-folder-open" style="font-size: 4rem; color: var(--gray-light); margin-bottom: 1rem;"></i>
+            <p style="color: var(--gray);">Henüz proje eklenmemiş.</p>
         </div>
-        <div class="project-card">
-            <div class="project-image">
-                <i class="fas fa-graduation-cap"></i>
-            </div>
-            <div class="project-content">
-                <h3>EduLearn Online Eğitim Platformu</h3>
-                <p>
-                    Canlı ders, video içerik ve interaktif sınav modülleri ile
-                    tam özellikli online eğitim platformu.
-                </p>
-                <div class="project-tags">
-                    <span class="tag">React</span>
-                    <span class="tag">Node.js</span>
-                    <span class="tag">WebRTC</span>
-                </div>
-            </div>
-        </div>
-    </div>
+    @endif
+
     <div style="text-align: center; margin-top: 3rem;">
-        <a href="/projects" class="btn btn-primary">
+        <a href="{{ route('projects') }}" class="btn btn-primary">
             <i class="fas fa-eye"></i>
             Tüm Projeleri Görüntüle
         </a>

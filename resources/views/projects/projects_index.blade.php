@@ -77,6 +77,9 @@
         transition: all 0.3s ease;
         backdrop-filter: blur(10px);
         cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
     }
 
     .project-card:hover {
@@ -86,7 +89,7 @@
     }
 
     .project-image {
-        height: 240px;
+        height: 320px;
         background: var(--gradient);
         display: flex;
         align-items: center;
@@ -95,6 +98,16 @@
         color: white;
         position: relative;
         overflow: hidden;
+    }
+
+    .project-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
     }
 
     .project-image::before {
@@ -112,11 +125,12 @@
             rgba(255, 255, 255, 0.05) 20px
         );
         animation: slide 25s linear infinite;
+        z-index: 0;
     }
 
     .project-image i {
         position: relative;
-        z-index: 1;
+        z-index: 2;
     }
 
     .project-badge {
@@ -142,6 +156,9 @@
 
     .project-content {
         padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
     }
 
     .project-category {
@@ -163,6 +180,7 @@
         color: rgba(248, 250, 252, 0.7);
         line-height: 1.8;
         margin-bottom: 1.5rem;
+        flex-grow: 1;
     }
 
     .project-stats {
@@ -254,9 +272,97 @@
         margin-top: 4rem;
     }
 
+    /* Pagination */
+    .pagination-wrapper {
+        display: flex;
+        justify-content: center;
+        margin-top: 4rem;
+    }
+
+    .pagination-wrapper nav {
+        display: flex;
+        gap: 0.5rem;
+    }
+
+    .pagination-wrapper .pagination {
+        display: flex;
+        gap: 0.5rem;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .pagination-wrapper .page-item {
+        display: inline-block;
+    }
+
+    .pagination-wrapper .page-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 45px;
+        height: 45px;
+        padding: 0.5rem 1rem;
+        background: rgba(30, 41, 59, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        color: rgba(255, 255, 255, 0.8);
+        text-decoration: none;
+        transition: all 0.3s ease;
+        font-weight: 500;
+    }
+
+    .pagination-wrapper .page-link:hover {
+        background: rgba(37, 99, 235, 0.2);
+        border-color: var(--primary);
+        color: var(--light);
+        transform: translateY(-2px);
+    }
+
+    .pagination-wrapper .page-item.active .page-link {
+        background: var(--gradient);
+        border-color: transparent;
+        color: var(--light);
+    }
+
+    .pagination-wrapper .page-item.disabled .page-link {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
+    .pagination-wrapper .page-item.disabled .page-link:hover {
+        background: rgba(30, 41, 59, 0.5);
+        transform: none;
+    }
+
+    /* Empty State */
+    .empty-state {
+        text-align: center;
+        padding: 5rem 2rem;
+        animation: fadeIn 0.5s ease;
+    }
+
+    .empty-state i {
+        font-size: 5rem;
+        color: rgba(255, 255, 255, 0.3);
+        margin-bottom: 1.5rem;
+    }
+
+    .empty-state h3 {
+        color: rgba(255, 255, 255, 0.8);
+        margin-bottom: 1rem;
+        font-size: 1.8rem;
+    }
+
+    .empty-state p {
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 1.1rem;
+    }
+
     /* Why Work With Us Section */
     .why-section {
         padding: 5rem 5%;
+        background: rgba(30, 41, 59, 0.3);
         position: relative;
         overflow: hidden;
     }
@@ -536,285 +642,75 @@
 
 <!-- Projects Grid -->
 <section class="projects-container">
-    <div class="projects-grid">
-        <!-- Project 1 -->
-        <div class="project-card" data-category="ecommerce">
-            <div class="project-image">
-                <span class="project-badge badge-featured">Öne Çıkan</span>
-                <i class="fas fa-shopping-bag"></i>
-            </div>
-            <div class="project-content">
-                <div class="project-category">E-Ticaret</div>
-                <h3>ModaMarket E-Ticaret Platformu</h3>
-                <p class="project-description">
-                    Türkiye'nin lider moda markalarından biri için geliştirdiğimiz tam entegre
-                    e-ticaret platformu. Günlük 50K+ ziyaretçi kapasiteli, gelişmiş ürün yönetimi
-                    ve ödeme altyapısı.
-                </p>
-                <div class="project-stats">
-                    <div class="stat-item">
-                        <i class="fas fa-calendar"></i>
-                        <span>2024</span>
+    @if($projects->count() > 0)
+        <div class="projects-grid">
+            @foreach($projects as $project)
+                <div class="project-card" data-category="{{ Str::slug($project->category) }}">
+                    <div class="project-image">
+                        @if($project->image)
+                            <img src="{{ $project->image_url }}" alt="{{ $project->name }}">
+                        @else
+                            <i class="fas fa-project-diagram"></i>
+                        @endif
+
+                        @if($project->order <= 3)
+                            <span class="project-badge badge-featured">Öne Çıkan</span>
+                        @elseif($project->year >= now()->year)
+                            <span class="project-badge badge-new">Yeni</span>
+                        @endif
                     </div>
-                    <div class="stat-item">
-                        <i class="fas fa-clock"></i>
-                        <span>6 Ay</span>
-                    </div>
-                    <div class="stat-item">
-                        <i class="fas fa-users"></i>
-                        <span>8 Kişi</span>
+                    <div class="project-content">
+                        <div class="project-category">{{ $project->category }}</div>
+                        <h3>{{ $project->name }}</h3>
+                        <p class="project-description">
+                            {{ Str::limit($project->description, 150) }}
+                        </p>
+                        <div class="project-stats">
+                            <div class="stat-item">
+                                <i class="fas fa-calendar"></i>
+                                <span>{{ $project->year }}</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-clock"></i>
+                                <span>{{ $project->duration }}</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-{{ $project->status == 'completed' ? 'check-circle' : ($project->status == 'in_progress' ? 'spinner' : 'pause-circle') }}"></i>
+                                <span>{{ $project->status_label }}</span>
+                            </div>
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag">{{ $project->category }}</span>
+                            <span class="tag badge {{ $project->status_badge_class }}">{{ $project->status_label }}</span>
+                        </div>
+                        <div class="project-footer">
+                            <div class="client-info">
+                                <div class="client-avatar">{{ strtoupper(substr($project->name, 0, 2)) }}</div>
+                                <div class="client-name">{{ Str::limit($project->name, 20) }}</div>
+                            </div>
+                            <a href="{{ route('projects.show', $project->slug) }}" class="view-btn">
+                                Detaylar
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
-                <div class="project-tags">
-                    <span class="tag">Laravel</span>
-                    <span class="tag">Vue.js</span>
-                    <span class="tag">MySQL</span>
-                    <span class="tag">Redis</span>
-                </div>
-                <div class="project-footer">
-                    <div class="client-info">
-                        <div class="client-avatar">MM</div>
-                        <div class="client-name">ModaMarket</div>
-                    </div>
-                    <a href="#" class="view-btn">
-                        Detaylar
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
+            @endforeach
         </div>
 
-        <!-- Project 2 -->
-        <div class="project-card" data-category="enterprise">
-            <div class="project-image">
-                <i class="fas fa-hospital"></i>
+        <!-- Pagination -->
+        @if($projects->hasPages())
+            <div class="pagination-wrapper">
+                {{ $projects->links() }}
             </div>
-            <div class="project-content">
-                <div class="project-category">Kurumsal Yazılım</div>
-                <h3>MediCare Hastane Yönetim Sistemi</h3>
-                <p class="project-description">
-                    Kapsamlı hastane yönetim sistemi. Hasta kayıtları, randevu sistemi, elektronik
-                    reçete, stok yönetimi ve muhasebe modülleri içeren entegre çözüm.
-                </p>
-                <div class="project-stats">
-                    <div class="stat-item">
-                        <i class="fas fa-calendar"></i>
-                        <span>2023</span>
-                    </div>
-                    <div class="stat-item">
-                        <i class="fas fa-clock"></i>
-                        <span>8 Ay</span>
-                    </div>
-                    <div class="stat-item">
-                        <i class="fas fa-users"></i>
-                        <span>10 Kişi</span>
-                    </div>
-                </div>
-                <div class="project-tags">
-                    <span class="tag">PHP</span>
-                    <span class="tag">MySQL</span>
-                    <span class="tag">Bootstrap</span>
-                    <span class="tag">API</span>
-                </div>
-                <div class="project-footer">
-                    <div class="client-info">
-                        <div class="client-avatar">MC</div>
-                        <div class="client-name">MediCare</div>
-                    </div>
-                    <a href="#" class="view-btn">
-                        Detaylar
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
+        @endif
+    @else
+        <div class="empty-state" style="text-align: center; padding: 5rem 2rem;">
+            <i class="fas fa-folder-open" style="font-size: 5rem; color: rgba(255,255,255,0.3); margin-bottom: 1.5rem;"></i>
+            <h3 style="color: rgba(255,255,255,0.8); margin-bottom: 1rem;">Henüz Proje Eklenmemiş</h3>
+            <p style="color: rgba(255,255,255,0.5);">Yakında burada projelerimizi görebileceksiniz.</p>
         </div>
-
-        <!-- Project 3 -->
-        <div class="project-card" data-category="web">
-            <div class="project-image">
-                <span class="project-badge badge-new">Yeni</span>
-                <i class="fas fa-graduation-cap"></i>
-            </div>
-            <div class="project-content">
-                <div class="project-category">Eğitim Platformu</div>
-                <h3>EduLearn Online Eğitim Platformu</h3>
-                <p class="project-description">
-                    Canlı ders, video içerik, interaktif sınav ve ödev sistemi içeren tam özellikli
-                    online eğitim platformu. WebRTC ile gerçek zamanlı iletişim.
-                </p>
-                <div class="project-stats">
-                    <div class="stat-item">
-                        <i class="fas fa-calendar"></i>
-                        <span>2025</span>
-                    </div>
-                    <div class="stat-item">
-                        <i class="fas fa-clock"></i>
-                        <span>5 Ay</span>
-                    </div>
-                    <div class="stat-item">
-                        <i class="fas fa-users"></i>
-                        <span>6 Kişi</span>
-                    </div>
-                </div>
-                <div class="project-tags">
-                    <span class="tag">React</span>
-                    <span class="tag">Node.js</span>
-                    <span class="tag">MongoDB</span>
-                    <span class="tag">WebRTC</span>
-                </div>
-                <div class="project-footer">
-                    <div class="client-info">
-                        <div class="client-avatar">EL</div>
-                        <div class="client-name">EduLearn</div>
-                    </div>
-                    <a href="#" class="view-btn">
-                        Detaylar
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Project 4 -->
-        <div class="project-card" data-category="mobile">
-            <div class="project-image">
-                <i class="fas fa-mobile-alt"></i>
-            </div>
-            <div class="project-content">
-                <div class="project-category">Mobil Uygulama</div>
-                <h3>FitLife Sağlık & Fitness Uygulaması</h3>
-                <p class="project-description">
-                    Kişiselleştirilmiş antrenman programları, beslenme takibi ve ilerleme analizi
-                    sunan iOS ve Android uygulaması. Giyilebilir cihaz entegrasyonu.
-                </p>
-                <div class="project-stats">
-                    <div class="stat-item">
-                        <i class="fas fa-calendar"></i>
-                        <span>2024</span>
-                    </div>
-                    <div class="stat-item">
-                        <i class="fas fa-clock"></i>
-                        <span>4 Ay</span>
-                    </div>
-                    <div class="stat-item">
-                        <i class="fas fa-users"></i>
-                        <span>5 Kişi</span>
-                    </div>
-                </div>
-                <div class="project-tags">
-                    <span class="tag">Flutter</span>
-                    <span class="tag">Firebase</span>
-                    <span class="tag">AI/ML</span>
-                </div>
-                <div class="project-footer">
-                    <div class="client-info">
-                        <div class="client-avatar">FL</div>
-                        <div class="client-name">FitLife</div>
-                    </div>
-                    <a href="#" class="view-btn">
-                        Detaylar
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Project 5 -->
-        <div class="project-card" data-category="enterprise">
-            <div class="project-image">
-                <i class="fas fa-chart-line"></i>
-            </div>
-            <div class="project-content">
-                <div class="project-category">CRM Sistemi</div>
-                <h3>SalesPro Müşteri İlişkileri Yönetimi</h3>
-                <p class="project-description">
-                    Satış ekipleri için geliştirilmiş kapsamlı CRM sistemi. Lead yönetimi,
-                    satış hunisi, raporlama ve tahminleme modülleri.
-                </p>
-                <div class="project-stats">
-                    <div class="stat-item">
-                        <i class="fas fa-calendar"></i>
-                        <span>2024</span>
-                    </div>
-                    <div class="stat-item">
-                        <i class="fas fa-clock"></i>
-                        <span>7 Ay</span>
-                    </div>
-                    <div class="stat-item">
-                        <i class="fas fa-users"></i>
-                        <span>9 Kişi</span>
-                    </div>
-                </div>
-                <div class="project-tags">
-                    <span class="tag">Laravel</span>
-                    <span class="tag">Vue.js</span>
-                    <span class="tag">PostgreSQL</span>
-                </div>
-                <div class="project-footer">
-                    <div class="client-info">
-                        <div class="client-avatar">SP</div>
-                        <div class="client-name">SalesPro</div>
-                    </div>
-                    <a href="#" class="view-btn">
-                        Detaylar
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Project 6 -->
-        <div class="project-card" data-category="web">
-            <div class="project-image">
-                <i class="fas fa-utensils"></i>
-            </div>
-            <div class="project-content">
-                <div class="project-category">Yemek Sipariş</div>
-                <h3>TastyFood Online Yemek Siparişi</h3>
-                <p class="project-description">
-                    Restoran ve müşteriler için online sipariş platformu. Gerçek zamanlı takip,
-                    ödeme entegrasyonu ve restoran yönetim paneli.
-                </p>
-                <div class="project-stats">
-                    <div class="stat-item">
-                        <i class="fas fa-calendar"></i>
-                        <span>2023</span>
-                    </div>
-                    <div class="stat-item">
-                        <i class="fas fa-clock"></i>
-                        <span>5 Ay</span>
-                    </div>
-                    <div class="stat-item">
-                        <i class="fas fa-users"></i>
-                        <span>7 Kişi</span>
-                    </div>
-                </div>
-                <div class="project-tags">
-                    <span class="tag">React</span>
-                    <span class="tag">Express</span>
-                    <span class="tag">MongoDB</span>
-                    <span class="tag">Socket.io</span>
-                </div>
-                <div class="project-footer">
-                    <div class="client-info">
-                        <div class="client-avatar">TF</div>
-                        <div class="client-name">TastyFood</div>
-                    </div>
-                    <a href="#" class="view-btn">
-                        Detaylar
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="load-more">
-        <button class="btn btn-primary">
-            <i class="fas fa-plus"></i>
-            Daha Fazla Yükle
-        </button>
-    </div>
+    @endif
 </section>
 
 <!-- Why Work With Us Section -->
