@@ -5,10 +5,11 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\BlogController;
 // Admin Controllers
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProjectController as AdminProjectController;
-use App\Http\Controllers\Admin\BlogController;
+use App\Http\Controllers\Admin\BlogController as AdminBlogController;
 use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\LoginController as AdminLoginController;
 
@@ -23,6 +24,8 @@ Route::get('/projelerimiz', [ProjectController::class, 'index'])->name('projects
 Route::get('/projects/{slug}', [ProjectController::class, 'show'])->name('projects.show');
 Route::get('/iletisim', [ContactController::class, 'index'])->name('contact');
 Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
+Route::get('/blog', [BlogController::class, 'index'])->name('blog');
+Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
 
 
 Route::fallback(function () {
@@ -44,12 +47,12 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(fun
         ->name('projects.bulk-delete');
 
     // Blog Management
-    Route::resource('blog', BlogController::class);
-    Route::post('blog/{blog}/toggle-status', [BlogController::class, 'toggleStatus'])
+    Route::resource('blog', AdminBlogController::class);
+    Route::post('blog/{blog}/toggle-status', [AdminBlogController::class, 'toggleStatus'])
         ->name('blog.toggle-status');
-    Route::post('blog/{blog}/publish', [BlogController::class, 'publish'])
+    Route::post('blog/{blog}/publish', [AdminBlogController::class, 'publish'])
         ->name('blog.publish');
-    Route::post('blog/bulk-delete', [BlogController::class, 'bulkDelete'])
+    Route::post('blog/bulk-delete', [AdminBlogController::class, 'bulkDelete'])
         ->name('blog.bulk-delete');
 
     // Customers Management
@@ -70,8 +73,8 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(fun
     Route::get('/activity-log', [DashboardController::class, 'activityLog'])->name('activity-log');
 
     // Quick Actions
-    Route::post('/quick-add-project', [AdminProjectController::class, 'quickAdd'])->name('quick-add-project');
-    Route::post('/quick-add-blog', [BlogController::class, 'quickAdd'])->name('quick-add-blog');
+    // Route::post('/quick-add-project', [AdminProjectController::class, 'quickAdd'])->name('quick-add-project');
+    // Route::post('/quick-add-blog', [BlogController::class, 'quickAdd'])->name('quick-add-blog');
 
 });
 

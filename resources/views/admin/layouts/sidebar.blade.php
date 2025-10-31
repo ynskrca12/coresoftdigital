@@ -532,7 +532,7 @@
                         <span class="nav-badge">12</span>
                     </a>
                 </li>
-                <li class="nav-item">
+                  <li class="nav-item">
                     <a href="{{ route('admin.blog.index') }}"
                        class="nav-link {{ Request::routeIs('admin.blog.*') ? 'active' : '' }}"
                        title="Blog">

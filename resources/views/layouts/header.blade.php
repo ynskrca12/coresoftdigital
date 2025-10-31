@@ -178,6 +178,7 @@
             <li><a href="{{ route('home') }}" class="{{ Request::routeIs('home') ? 'active' : '' }}">Ana Sayfa</a></li>
             <li><a href="{{ route('about') }}" class="{{ Request::routeIs('about') ? 'active' : '' }}">Hakkımızda</a></li>
             <li><a href="{{ route('projects') }}" class="{{ Request::routeIs('projects') ? 'active' : '' }}">Projelerimiz</a></li>
+            <li><a href="{{ route('blog') }}" class="{{ Request::routeIs('blogs') ? 'active' : '' }}">Blog</a></li>
             <li><a href="{{ route('contact') }}" class="{{ Request::routeIs('contact') ? 'active' : '' }}">İletişim</a></li>
         </ul>
 
