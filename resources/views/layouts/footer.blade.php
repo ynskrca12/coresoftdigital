@@ -211,9 +211,7 @@
             <h3>Şirket</h3>
             <a href="{{ route('about') }}">Hakkımızda</a>
             <a href="{{ route('projects') }}">Projelerimiz</a>
-            <a href="{{ route('about') }}">Ekibimiz</a>
-            <a href="#">Kariyer</a>
-            <a href="#">Blog</a>
+            <a href="{{ route('blog') }}">Blog</a>
             <a href="{{ route('contact') }}">İletişim</a>
         </div>
 
@@ -221,11 +219,10 @@
         <div class="footer-section">
             <h3>İletişim</h3>
             <p><i class="fas fa-envelope"></i> info@coresoftdigital.com</p>
-            <p><i class="fas fa-phone"></i> +90 (XXX) XXX XX XX</p>
-            <p><i class="fas fa-map-marker-alt"></i> Maslak, İstanbul, TR</p>
+            <p><i class="fas fa-phone"></i> +90 (534 234 64 81) / +90 (539 314 19 74)</p>
+            <p><i class="fas fa-map-marker-alt"></i> Pendik, İstanbul, TR</p>
 
-            <h3 style="margin-top: 1.5rem;">Newsletter</h3>
-            <p>Yeniliklerden haberdar olun</p>
+            <p class="mt-4">Yeniliklerden haberdar olun</p>
             <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Teşekkürler! E-bültenimize kaydoldunuz.');">
                 <input type="email" class="newsletter-input" placeholder="E-posta adresiniz" required>
                 <button type="submit" class="newsletter-btn">

@@ -13,27 +13,34 @@
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:title" content="@yield('title', 'CoreSoft Digital - Profesyonel Yazılım Çözümleri')">
     <meta property="og:description" content="@yield('meta_description', 'CoreSoft Digital - Profesyonel yazılım çözümleri ile işinizi dijital dünyaya taşıyoruz.')">
-    <meta property="og:image" content="{{ asset('images/logo/coresoftdigitalfavicon-bg-remove.png') }}">
+    <meta property="og:image" content="{{ asset('images/logos/coresoftdigitalfavicon-bg-remove.png') }}">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="{{ url()->current() }}">
     <meta property="twitter:title" content="@yield('title', 'CoreSoft Digital - Profesyonel Yazılım Çözümleri')">
     <meta property="twitter:description" content="@yield('meta_description', 'CoreSoft Digital - Profesyonel yazılım çözümleri ile işinizi dijital dünyaya taşıyoruz.')">
-    <meta property="twitter:image" content="{{ asset('images/logo/coresoftdigitalfavicon.png') }}">
+    <meta property="twitter:image" content="{{ asset('images/logos/coresoftdigitalfavicon.png') }}">
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="{{ asset('images/logo/coresoftdigitalfavicon.png') }}">
     <link rel="shortcut icon" type="image/png" href="{{ asset('images/logo/coresoftdigitalfavicon.png') }}">
-    <link rel="apple-touch-icon" href="{{ asset('images/logo/coresoftdigitalfavicon.png') }}">
+    <link rel="apple-touch-icon" href="{{ asset('images/logos/coresoftdigitalfavicon.png') }}">
 
     <title>@yield('title', 'CoreSoft Digital - Profesyonel Yazılım Çözümleri')</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Bootstrap 5 JS (Popper dahil) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
 
     <!-- Base Styles -->
     <style>

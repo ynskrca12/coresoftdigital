@@ -381,8 +381,8 @@
                 </div>
                 <h3>Telefon</h3>
                 <p>
-                    Hafta içi 09:00 - 18:00 saatleri arasında<br>
-                    <a href="tel:+905342346481">+90 (534 234 64 81) </a>
+                    Hafta içi ve hafta sonu 09:00 - 21:00 saatleri arasında<br>
+                    <a href="tel:+905342346481">+90 (534 234 64 81) / +90 (539 314 19 74)</a>
                 </p>
             </div>
 
@@ -394,7 +394,7 @@
                 <p>
                     Sorularınız için<br>
                     <a href="mailto:info@coresoftdigital.com">info@coresoftdigital.com</a><br>
-                    <a href="mailto:support@coresoftdigital.com">support@coresoftdigital.com</a>
+                    <a href="mailto:support@coresoftdigital.com">coresoftdigitalsoftware@gmail.com</a>
                 </p>
             </div>
 
@@ -404,10 +404,8 @@
                 </div>
                 <h3>Adres</h3>
                 <p>
-                    CoreSoft Digital Yazılım A.Ş.<br>
-                    Maslak Mahallesi, Büyükdere Caddesi<br>
-                    No: 123, Kat: 5<br>
-                    Sarıyer, İstanbul 34398
+                    CoreSoft Digital<br>
+                    Pendik, İstanbul 34398
                 </p>
             </div>
 
@@ -434,47 +432,47 @@
             <div class="form-row">
                 <div class="form-group">
                     <label for="name">Adınız Soyadınız *</label>
-                    <input type="text" id="name" class="form-control" required placeholder="Adınız Soyadınız">
+                    <input type="text" id="name" class="form-control" required>
                 </div>
 
                 <div class="form-group">
                     <label for="company">Şirket Adı</label>
-                    <input type="text" id="company" class="form-control" placeholder="Şirket adınız (opsiyonel)">
+                    <input type="text" id="company" class="form-control">
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group">
                     <label for="email">E-posta *</label>
-                    <input type="email" id="email" class="form-control" required placeholder="ornek@email.com">
+                    <input type="email" id="email" class="form-control" required>
                 </div>
 
                 <div class="form-group">
                     <label for="phone">Telefon</label>
-                    <input type="tel" id="phone" class="form-control" placeholder="+90 (XXX) XXX XX XX">
+                    <input type="tel" id="phone" class="form-control">
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="subject">Konu *</label>
-                <input type="text" id="subject" class="form-control" required placeholder="Mesajınızın konusu">
+                <input type="text" id="subject" class="form-control" required>
             </div>
 
             <div class="form-group">
                 <label for="message">Mesajınız *</label>
-                <textarea id="message" class="form-control" required placeholder="Proje detaylarınızı veya sorularınızı buraya yazabilirsiniz..."></textarea>
+                <textarea id="message" class="form-control" required></textarea>
             </div>
 
-<div class="form-group select-wrap">
-  <label for="budget" class="form-label">Bütçe Aralığı</label>
-  <select id="budget" class="form-control custom-select">
-    <option value="">Seçiniz</option>
-    <option value="0-25k">0 - 25.000 TL</option>
-    <option value="25k-50k">25.000 - 50.000 TL</option>
-    <option value="50k-100k">50.000 - 100.000 TL</option>
-    <option value="100k+">100.000 TL üzeri</option>
-  </select>
-</div>
+        <div class="form-group select-wrap">
+        <label for="budget" class="form-label">Bütçe Aralığı</label>
+        <select id="budget" class="form-control custom-select">
+            <option value="">Seçiniz</option>
+            <option value="0 - 50.000 TL">0 - 50.000 TL</option>
+            <option value="50.000 - 150.000 TL">50.000 - 150.000 TL</option>
+            <option value="150.000 - 500.000 TL">150.000 - 500.000 TL</option>
+            <option value="500.000 TL üzeri">500.000 TL üzeri</option>
+        </select>
+        </div>
 
             <button type="submit" class="submit-btn">
                 <i class="fas fa-paper-plane"></i>
