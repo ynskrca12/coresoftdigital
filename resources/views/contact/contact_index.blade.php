@@ -463,16 +463,16 @@
                 <textarea id="message" class="form-control" required></textarea>
             </div>
 
-        <div class="form-group select-wrap">
-        <label for="budget" class="form-label">Bütçe Aralığı</label>
-        <select id="budget" class="form-control custom-select">
-            <option value="">Seçiniz</option>
-            <option value="0 - 50.000 TL">0 - 50.000 TL</option>
-            <option value="50.000 - 150.000 TL">50.000 - 150.000 TL</option>
-            <option value="150.000 - 500.000 TL">150.000 - 500.000 TL</option>
-            <option value="500.000 TL üzeri">500.000 TL üzeri</option>
-        </select>
-        </div>
+            <div class="form-group select-wrap">
+                <label for="budget" class="form-label">Bütçe Aralığı</label>
+                <select id="budget" class="form-control custom-select">
+                    <option value="">Seçiniz</option>
+                    <option value="0 - 50.000 TL">0 - 50.000 TL</option>
+                    <option value="50.000 - 150.000 TL">50.000 - 150.000 TL</option>
+                    <option value="150.000 - 500.000 TL">150.000 - 500.000 TL</option>
+                    <option value="500.000 TL üzeri">500.000 TL üzeri</option>
+                </select>
+            </div>
 
             <button type="submit" class="submit-btn">
                 <i class="fas fa-paper-plane"></i>
